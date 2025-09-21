@@ -37,9 +37,7 @@ jobs:
           username: ${{ secrets.DEPLOY_USER }}
           port: ${{ secrets.DEPLOY_PORT }}
           key: ${{ secrets.DEPLOY_SSH_KEY }}
-          source: |
-            ./myapp
-            ./docker-compose.yml
+          source: "./*"
           target: /home/servisin-be
 
       - name: SSH & Restart Docker
