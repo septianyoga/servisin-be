@@ -10,7 +10,8 @@ RUN go mod download
 COPY . .
 
 # build executable
-RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -o /myapp main.go
+# RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -o /myapp main.go
+RUN go build -o /myapp
 
 # runtime stage
 FROM alpine:3.18
