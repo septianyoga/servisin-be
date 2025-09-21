@@ -1,0 +1,26 @@
+version: "3.8"
+
+services:
+  db:
+    image: postgres:15
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: servisin_user
+      POSTGRES_PASSWORD: servisin_password
+      POSTGRES_DB: servisin_dev
+    volumes:
+      - db_data:/var/lib/postgresql/data
+
+  app:
+    build: .
+    restart: unless-stopped
+    environment:
+      DATABASE_URL: postgres://postgres:postgres@db:5432/myapp_db?sslmode=disable
+      PORT: 8080
+    depends_on:
+      - db
+    ports:
+      - "80:8080"
+
+volumes:
+  db_data:
