@@ -17,7 +17,7 @@ services:
     env_file:
       - .env   
     environment:
-      DATABASE_URL: postgres://postgres:postgres@db:5432/myapp_db?sslmode=disable
+      DATABASE_URL: postgres://servisin_user:servisin_password@db:5432/servisin_dev?sslmode=disable
       PORT: 8080
     depends_on:
       - db
