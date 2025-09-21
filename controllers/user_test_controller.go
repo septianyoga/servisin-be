@@ -10,8 +10,18 @@ import (
 
 func GetUsers(c *gin.Context) {
 	var users []models.User
+	var total int64
+
+	// Ambil semua data
 	config.DB.Find(&users)
-	c.JSON(http.StatusOK, gin.H{"data": users})
+
+	// Hitung total
+	config.DB.Model(&models.User{}).Count(&total)
+
+	c.JSON(http.StatusOK, gin.H{
+		"total": total,
+		"data":  users,
+	})
 }
 
 func CreateUser(c *gin.Context) {
