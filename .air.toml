@@ -1,0 +1,22 @@
+# .air.toml
+
+# binary yang dihasilkan
+bin = "tmp/main"
+
+# cmd untuk build
+cmd = "go build -o ./tmp/main ."
+
+# main file
+full_bin = "tmp/main"
+
+# folder/folder yang di-watch
+watch_dir = "."
+
+# ignore vendor biar ga berat
+exclude_dir = ["vendor", "tmp"]
+
+# file extensions
+include_ext = ["go", "tpl", "tmpl", "html"]
+
+# log
+log_color = true
