@@ -14,6 +14,7 @@ RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -o /myapp main.go
 
 # runtime stage
 FROM alpine:3.18
+RUN apk add --no-cache tzdata
 WORKDIR /root/
 COPY --from=builder /myapp .
 EXPOSE 8080
