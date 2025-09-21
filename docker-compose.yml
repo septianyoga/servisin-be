@@ -14,6 +14,8 @@ services:
   app:
     build: .
     restart: unless-stopped
+    env_file:
+      - .env   
     environment:
       DATABASE_URL: postgres://postgres:postgres@db:5432/myapp_db?sslmode=disable
       PORT: 8080
