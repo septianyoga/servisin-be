@@ -23,12 +23,12 @@ jobs:
           go mod download
           go build -o myapp
 
-      - name: Debug workspace
-        run: |
-          echo "Workspace content:"
-          ls -lah
-          echo "Find recursively:"
-          find . -maxdepth 2 -type f
+      # - name: Debug workspace
+      #   run: |
+      #     echo "Workspace content:"
+      #     ls -lah
+      #     echo "Find recursively:"
+      #     find . -maxdepth 2 -type f
 
       - name: Copy files to server
         uses: appleboy/scp-action@v0.1.6
