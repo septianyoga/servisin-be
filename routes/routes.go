@@ -11,6 +11,7 @@ func SetupRouter() *gin.Engine {
 	api := r.Group("/api/v1")
 	{
 		api.GET("/users", controllers.GetUsers)
+		api.GET("/users/:id", controllers.GetUserDetail)
 		api.POST("/users", controllers.CreateUser)
 		api.PUT("/users/:id", controllers.UpdateUser)
 		api.DELETE("/users/:id", controllers.DeleteUser)

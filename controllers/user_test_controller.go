@@ -24,6 +24,22 @@ func GetUsers(c *gin.Context) {
 	})
 }
 
+func GetUserDetail(c *gin.Context) {
+	id := c.Param("id")
+	
+	var user models.User
+	if err := config.DB.First(&user, id).Error; err != nil {
+		c.JSON(http.StatusNotFound, gin.H{"error": "User not found"})
+		return
+	}
+	
+	config.DB.First(&user, id)
+
+	c.JSON(http.StatusOK, gin.H{
+		"data":  user,
+	})
+}
+
 func CreateUser(c *gin.Context) {
 	var input models.User
 	if err := c.ShouldBindJSON(&input); err != nil {
